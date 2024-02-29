@@ -28,7 +28,7 @@ class _DisplayCheckState extends State<DisplayCheck> {
   @override
   void initState() {
     super.initState();
-    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     // 2초마다 호출되는 타이머 시작
     _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
       setState(() {
@@ -47,7 +47,6 @@ class _DisplayCheckState extends State<DisplayCheck> {
   void dispose() {
     // 위젯이 제거될 때 타이머 취소
     _timer.cancel();
-
     super.dispose();
   }
 
@@ -55,28 +54,6 @@ class _DisplayCheckState extends State<DisplayCheck> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _backgroundColors[_currentIndex],
-      // appBar: AppBar(
-      //   title: const Text(
-      //     'Display Check',
-      //     style: TextStyle(
-      //       fontSize: 30,
-      //       fontWeight: FontWeight.normal,
-      //       color: Colors.black,
-      //     ),
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //         onPressed: () {
-      //           context.push('/usb');
-      //         },
-      //         icon: const Icon(
-      //           Icons.next_plan_sharp,
-      //           size: 40,
-      //           color: Colors.black,
-      //         ))
-      //   ],
-      // ),
-      // 배경색을 _currentIndex에 따라 업데이트
     );
   }
 }

@@ -12,8 +12,10 @@ class SoundPage extends StatefulWidget {
 class _SoundPageState extends State<SoundPage> {
   final player = AudioPlayer();
   void soundPlay() async {
-    await player.play(
-        UrlSource('https://www2.cs.uic.edu/~i101/SoundFiles/StarWars3.wav'));
+    await player.play(AssetSource('sounds/sound.mp3'));
+    Future.delayed(const Duration(seconds: 2), () {
+      pressNext();
+    });
   }
 
   void pressNext() {
@@ -50,11 +52,6 @@ class _SoundPageState extends State<SoundPage> {
             onPressed: () {
               print("sound button pressed");
               soundPlay();
-
-              //wait 10 seconds
-              Future.delayed(const Duration(seconds: 10), () {
-                pressNext();
-              });
             },
             child: const Text(
               'Sound',
